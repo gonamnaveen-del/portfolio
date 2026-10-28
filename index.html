@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Naveen Gonam — AI Engineer and Python Developer." />
+  <title>Naveen Gonam | AI Engineer & Python Developer</title>
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: #121620;
+      --panel-2: #171c28;
+      --text: #f3f5f9;
+      --muted: #a4adbd;
+      --line: rgba(255,255,255,.10);
+      --accent: #a8f06a;
+      --accent-2: #d2ffab;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(16px);
+      background: rgba(11,13,18,.84); border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; min-height: 72px; gap: 24px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.1rem; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 24px; color: var(--muted); font-size: .92rem; }
+    .nav-links a:hover { color: var(--accent); }
+    .hero { padding: 100px 0 82px; overflow: hidden; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .18em; font-size: .76rem; font-weight: 800; }
+    h1 { font-size: clamp(2.8rem, 7vw, 5.7rem); line-height: 1.02; letter-spacing: -.065em; margin: 18px 0; max-width: 900px; }
+    h1 .highlight { color: var(--accent); }
+    .hero p { max-width: 680px; color: var(--muted); font-size: 1.1rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border-radius: 10px; font-weight: 750; border: 1px solid var(--line); transition: transform .2s, border-color .2s; }
+    .btn:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .btn.primary { color: #10150c; background: var(--accent); border-color: var(--accent); }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
+    .pill { border: 1px solid var(--line); border-radius: 999px; color: #c8cfda; padding: 6px 12px; font-size: .82rem; background: rgba(255,255,255,.025); }
+    section { padding: 70px 0; border-top: 1px solid var(--line); }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 30px; }
+    h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); line-height: 1.1; letter-spacing: -.045em; margin: 8px 0 0; }
+    .section-head p { max-width: 430px; color: var(--muted); margin: 0; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
+    .card { background: linear-gradient(145deg, var(--panel), #10131b); border: 1px solid var(--line); border-radius: 18px; padding: 24px; min-width: 0; }
+    .card:hover { border-color: rgba(168,240,106,.48); }
+    .card-top { display: flex; justify-content: space-between; align-items: start; gap: 16px; }
+    .card h3 { margin: 0 0 8px; font-size: 1.17rem; letter-spacing: -.025em; }
+    .card p { color: var(--muted); margin: 8px 0; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+    .tag { color: var(--accent-2); background: rgba(168,240,106,.08); border: 1px solid rgba(168,240,106,.15); border-radius: 7px; padding: 4px 8px; font-size: .76rem; }
+    .date { white-space: nowrap; font-size: .78rem; color: var(--muted); }
+    .skills { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+    .skill-group { padding: 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
+    .skill-group h3 { margin: 0 0 12px; font-size: .98rem; }
+    .skill-group p { color: var(--muted); margin: 0; font-size: .93rem; }
+    .timeline { display: grid; gap: 14px; }
+    .timeline-item { display: grid; grid-template-columns: 220px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .timeline-item:last-child { border-bottom: 0; }
+    .timeline-item .when { color: var(--muted); font-size: .9rem; }
+    .timeline-item h3 { margin: 0 0 5px; font-size: 1.08rem; }
+    .timeline-item p { margin: 0; color: var(--muted); }
+    .contact-box { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 32px; border-radius: 20px; border: 1px solid rgba(168,240,106,.25); background: radial-gradient(ellipse at top right, rgba(168,240,106,.10), transparent 50%), var(--panel); }
+    .contact-box p { color: var(--muted); max-width: 580px; }
+    footer { padding: 28px 0; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    @media (max-width: 760px) {
+      .nav-inner { align-items: flex-start; flex-direction: column; padding: 16px 0; gap: 10px; }
+      .nav-links { gap: 16px; flex-wrap: wrap; font-size: .85rem; }
+      .hero { padding: 68px 0 58px; }
+      .grid, .skills { grid-template-columns: 1fr; }
+      .section-head { align-items: flex-start; flex-direction: column; }
+      .timeline-item { grid-template-columns: 1fr; gap: 6px; }
+      .contact-box { flex-direction: column; align-items: flex-start; padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#home">NAVEEN<span>.</span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
+        <a href="#projects">Projects</a><a href="#achievements">Achievements</a><a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home" style="border-top:0">
+      <div class="wrap">
+        <div class="eyebrow">AI Engineer · Python Developer</div>
+        <h1>Building practical solutions with <span class="highlight">AI & code.</span></h1>
+        <p>
+          I'm Naveen Gonam, a Computer Science student specializing in AI and Machine Learning.
+          I work with Python, backend development, computer vision, and Generative AI to build
+          useful, data-driven applications.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">Explore Projects ↘</a>
+          <a class="btn" href="mailto:naveen.gonam@gmail.com">Contact Me</a>
+          <a class="btn" href="https://www.linkedin.com/in/gonam-naveen" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a class="btn" href="https://github.com/gonamnaveen-del" target="_blank" rel="noreferrer">GitHub ↗</a>
+        </div>
+        <div class="hero-meta">
+          <span class="pill">Python & FastAPI</span><span class="pill">Machine Learning</span>
+          <span class="pill">Computer Vision</span><span class="pill">Generative AI</span>
+          <span class="pill">REST APIs</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">A little about me</div><h2>About</h2></div>
+          <p>Focused on turning technical concepts into practical applications through clean code, teamwork, and continuous learning.</p>
+        </div>
+        <div class="card">
+          <p>
+            I am pursuing a B.Tech in Computer Science Engineering with a specialization in AI & ML.
+            My experience includes building backend APIs, working with machine-learning workflows,
+            and contributing to a computer-vision module for medicine detection. I enjoy learning
+            new tools and building projects that solve real problems.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">What I work with</div><h2>Technical Skills</h2></div>
+          <p>A practical toolkit across programming, AI, data, backend development, and developer tools.</p>
+        </div>
+        <div class="skills">
+          <div class="skill-group"><h3>Programming</h3><p>Python, Java, C, C++</p></div>
+          <div class="skill-group"><h3>AI / Machine Learning</h3><p>Machine Learning, TensorFlow, OpenCV, YOLOv8, Computer Vision</p></div>
+          <div class="skill-group"><h3>Generative AI</h3><p>LLMs, Prompting, RAG, LangGraph, Ollama</p></div>
+          <div class="skill-group"><h3>Data Science</h3><p>Pandas, NumPy, Data Analysis</p></div>
+          <div class="skill-group"><h3>Backend & Web</h3><p>FastAPI, REST APIs, Flask, HTML, CSS, JavaScript</p></div>
+          <div class="skill-group"><h3>Database & Tools</h3><p>MySQL, PostgreSQL, SQLAlchemy, Git, GitHub, VS Code</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Learning by building</div><h2>Experience</h2></div>
+          <p>Internship and program experience across backend development and AI/ML.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="when">2026 – Present</div>
+            <div><h3>Python Full-Stack Intern · Infosys Springboard</h3>
+              <p>Developing an Event Registration Platform using Python, FastAPI, and REST APIs. Working on event creation, registration, user-management workflows, database integration, and modular backend services.</p></div>
+          </article>
+          <article class="timeline-item">
+            <div class="when">2026</div>
+            <div><h3>Agentic AI Program · AMD</h3>
+              <p>Explored RAG, LangGraph, Ollama, LLMs, and Generative AI workflows, and worked with Python-based AI solutions and agent-based architectures.</p></div>
+          </article>
+          <article class="timeline-item">
+            <div class="when">2026</div>
+            <div><h3>AI/ML Intern · SmartBridge & APSCHE</h3>
+              <p>Worked on Python, data analysis, and machine-learning workflows; coordinated team tasks and collaborated on project implementation.</p></div>
+          </article>
+          <article class="timeline-item">
+            <div class="when">Dec 2023 – May 2024</div>
+            <div><h3>Intern · Codeon Technologies Pvt. Ltd.</h3>
+              <p>Gained practical exposure to Python, web development, and cloud computing through team-based projects and collaborative development tasks.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Selected work</div><h2>Projects</h2></div>
+          <p>A selection of projects demonstrating backend development, computer vision, and machine learning.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="card-top"><h3>Creator Analytics & Content Performance Dashboard</h3><span class="date">Ongoing</span></div>
+            <p>Developing a FastAPI analytics backend to track content performance, engagement, platform metrics, and dashboard insights.</p>
+            <div class="tag-row"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">SQLAlchemy</span><span class="tag">REST APIs</span></div>
+          </article>
+          <article class="card">
+            <div class="card-top"><h3>AI Medicine Reminder & Health Assistant</h3><span class="date">Team Project</span></div>
+            <p>Contributed the YOLOv8-based medicine detection module to identify medicine packages from images using computer vision.</p>
+            <div class="tag-row"><span class="tag">Python</span><span class="tag">YOLOv8</span><span class="tag">OpenCV</span><span class="tag">LangGraph</span><span class="tag">Ollama</span><span class="tag">FastAPI</span></div>
+          </article>
+          <article class="card">
+            <div class="card-top"><h3>HDI Prediction System</h3></div>
+            <p>Built a machine-learning application to predict Human Development Index using socioeconomic indicators, with Flask and MySQL integration.</p>
+            <div class="tag-row"><span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Flask</span><span class="tag">MySQL</span></div>
+          </article>
+          <article class="card">
+            <div class="card-top"><h3>Event Registration Platform</h3></div>
+            <p>Developed backend workflows for event creation, user registration, and event data management through REST APIs.</p>
+            <div class="tag-row"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">REST APIs</span><span class="tag">MySQL</span><span class="tag">Git</span></div>
+          </article>
+        </div>
+        <p style="color:var(--muted);font-size:.88rem;margin-top:16px">Project repository links can be added once the exact public GitHub URLs are confirmed.</p>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Recognition & learning</div><h2>Achievements & Certifications</h2></div>
+          <p>Hackathon participation and technical learning credentials.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><h3>Smart India Hackathon 2025</h3><p>Clean & Green Technology — contributed to feasibility and viability analysis focused on practical, scalable implementation.</p></article>
+          <article class="card"><h3>AMD – Agentic AI Program</h3><p>2026 · Agentic AI and Generative AI workflows.</p></article>
+          <article class="card"><h3>AI/ML Virtual Internship</h3><p>SmartBridge & APSCHE.</p></article>
+          <article class="card"><h3>Python Foundation Certification</h3><p>Infosys Springboard.</p></article>
+          <article class="card"><h3>Claude 101</h3><p>Anthropic.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Academic background</div><h2>Education</h2></div>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item"><div class="when">2024 – Present</div><div><h3>B.Tech · Computer Science Engineering (AI & ML)</h3><p>Sri Venkateswara College of Engineering</p></div></article>
+          <article class="timeline-item"><div class="when">2021 – 2024</div><div><h3>Diploma · Computer Science Engineering</h3><p>Geethanjali · CGPA: 70.2%</p></div></article>
+          <article class="timeline-item"><div class="when">2019 – 2020</div><div><h3>Secondary Education</h3><p>Board of Secondary Education, Andhra Pradesh · CGPA: 9.8</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <div><div class="eyebrow">Let's connect</div><h2>Have a role or project in mind?</h2><p>I'm open to connecting about opportunities in Python development, backend engineering, and AI/ML.</p>
+            <p> Nellore, Andhra Pradesh · +91 9398831079 · naveen.gonam@gmail.com</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="mailto:naveen.gonam@gmail.com">Email Naveen ↗</a>
+            <a class="btn" href="https://www.linkedin.com/in/gonam-naveen" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© <span id="year"></span> Naveen Gonam</span>
+      <span>Designed for clarity · Built with HTML, CSS & JavaScript</span>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
